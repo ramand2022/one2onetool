@@ -45,4 +45,28 @@ jobs:
         
       - name: remove previous one2oneapp-latest image for re-build
         run: aws ecr batch-delete-image --repository-name $ECR_REPOSITORY --image-ids imageTag="one2oneapp-latest"
+ test:
+    needs : pre_build
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+    strategy:
+      fail-fast: false      
+      matrix:
+        language: [ 'javascript' ]
+    steps:     
+     - name: check out the code
+       uses: actions/checkout@v3
+        
+     - name: Initialize CodeQL
+       uses: github/codeql-action/init@v2
+       with:
+         queries: +security-extended
+         languages: ${{ matrix.language }}
+
+     - name: Perform CodeQL Analysis
+       uses: github/codeql-action/analyze@v1
+       
           
