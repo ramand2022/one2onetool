@@ -8,7 +8,7 @@ on:
 
 env:
   AWS_REGION: us-east-1                        
-  ECR_REPOSITORY: assignment21jul             
+  ECR_REPOSITORY: assignment21jul-duplicate             
   ECS_SERVICE: assignment-service
   ECS_CLUSTER: assignment-cluster
   ECS_TASK_DEFINITION: assignment-task.json                                           
