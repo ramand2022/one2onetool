@@ -1,4 +1,4 @@
-name: data_file
+name: Dana_run
 on:
  workflow_dispatch{}
   push:
