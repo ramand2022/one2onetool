@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - "release"
-	  - "staging"
+      - "staging"
 
 env:
   AWS_REGION: us-east-1                        
