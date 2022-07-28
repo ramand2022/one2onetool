@@ -45,15 +45,4 @@ jobs:
         
       - name: remove previous one2oneapp-latest image for re-build
         run: aws ecr batch-delete-image --repository-name $ECR_REPOSITORY --image-ids imageTag="one2oneapp-latest"
-           
-
-      - name: Send mail
-        if: failure()
-        uses: dawidd6/action-send-mail@v3
-        with:
-         server_address: smtp.mail.yahoo.com
-         server_port: 465
-         username: ${{secrets.MAIL_USERNAME}}
-         password: ${{secrets.MAIL_PASSWORD}}
-         subject: Docker build has issues in release branch of ${{ github.repository }} --  ${{job.status}}
-         body: "Job completed ${{job.status}} ${{ toJson(job) }}"
+          
